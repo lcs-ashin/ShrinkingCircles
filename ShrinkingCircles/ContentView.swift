@@ -7,15 +7,24 @@
 
 import SwiftUI
 
+struct ShrinkingCircles: Shape {
+    func path(in rect: CGRect) -> Path {
+        
+        // Create the path
+        var path = Path()
+        
+        
+        
+        // Return the path
+        return path
+    }
+    
+    
+}
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        ShrinkingCircles()
     }
 }
 
