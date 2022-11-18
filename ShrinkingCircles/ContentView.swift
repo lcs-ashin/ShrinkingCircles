@@ -93,6 +93,10 @@ struct ShrinkingCirclesRecursion: Shape {
                                                 height: rect.height * ratioTwo)))
         
         // Decide whether to call the function again (recurse)
+        if currentDepth < desiredDepth {
+            let pathForNextCircle = recursiveHelper(currentDepth: currentDepth + 1, drawingIn: rect)
+            path.addPath(pathForNextCircle)
+        }
         
         // Return the path
         return path
@@ -106,7 +110,7 @@ struct ContentView: View {
             ShrinkingCirclesIteration()
                 .stroke(lineWidth: 3)
             
-            ShrinkingCirclesRecursion(desiredDepth: 4)
+            ShrinkingCirclesRecursion(desiredDepth: 10)
                 .stroke(lineWidth: 3)
         }
     }
