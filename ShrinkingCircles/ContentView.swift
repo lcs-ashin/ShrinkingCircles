@@ -39,7 +39,7 @@ struct ShrinkingCirclesIteration: Shape {
         var path = Path()
         
         // Create circles
-        for i in 0...10 {
+        for i in 0...9 {
             
             let ratio = 0.1 * Double(i)
             let ratioTwo = 1 - ratio
@@ -59,10 +59,44 @@ struct ShrinkingCirclesIteration: Shape {
     
 }
 
+struct ShrinkingCirclesRecursion: Shape {
+    
+    // MARK: Stored Property
+    let desiredDepth: Int
+    
+    // MARK: Functions
+    func path(in rect: CGRect) -> Path {
+        // Create the path
+        var path = Path()
+        
+        // Begin calling the recursive helper
+        let allThePaths = recursiveHelper(currentDepth: 1)
+        path.addPath(allThePaths)
+        
+        // Return the path
+        return path
+    }
+    
+    func recursiveHelper(currentDepth: Int) -> Path {
+        
+        // Make the path
+        var path = Path()
+        
+        // Return the path
+        return path
+    }
+    
+}
+
 struct ContentView: View {
     var body: some View {
-        ShrinkingCirclesIteration()
-            .stroke(lineWidth: 3)
+        VStack {
+            ShrinkingCirclesIteration()
+                .stroke(lineWidth: 3)
+            
+            ShrinkingCirclesRecursion(desiredDepth: 4)
+                .stroke(lineWidth: 3)
+        }
     }
 }
 
